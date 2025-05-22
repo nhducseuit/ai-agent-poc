@@ -2,6 +2,18 @@ import streamlit as st
 from step1_target import step1_target
 from step2_source import step2_source
 from step3_mapping import step3_mapping
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+def get_gemini_api_key():
+    # Ưu tiên lấy từ biến môi trường, nếu không có thì lấy từ session_state
+    env_key = os.getenv("GEMINI_API_KEY")
+    if env_key:
+        return env_key
+    # Fallback: lấy key user nhập ở UI nếu cần
+    return st.session_state.get('gemini_api_key')
 
 st.set_page_config(page_title="ETL Agent Wizard", layout="centered")
 st.title("🚦 ETL AI-Agent Wizard (Human-in-the-loop)")
@@ -27,8 +39,7 @@ with col_btns[3]:
         st.session_state['step'] += 1
         st.rerun()
 
-# API Key nhập 1 lần
-gemini_api_key = ''
+gemini_api_key = get_gemini_api_key()
 st.session_state['gemini_api_key'] = gemini_api_key
 
 # Step router
