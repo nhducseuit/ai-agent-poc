@@ -15,7 +15,7 @@ def get_gemini_api_key():
     # Fallback: lấy key user nhập ở UI nếu cần
     return st.session_state.get('gemini_api_key')
 
-st.set_page_config(page_title="ETL Agent Wizard", layout="centered")
+st.set_page_config(page_title="ETL Agent Wizard", layout="wide")
 st.title("🚦 ETL AI-Agent Wizard (Human-in-the-loop)")
 
 if 'step' not in st.session_state: st.session_state['step'] = 1
