@@ -28,7 +28,7 @@ with col_btns[3]:
         st.rerun()
 
 # API Key nhập 1 lần
-gemini_api_key = 'AIzaSyDNUiJL5UZC4iKy5tZRvBILpWXgWhdnwo4'
+gemini_api_key = ''
 st.session_state['gemini_api_key'] = gemini_api_key
 
 # Step router
